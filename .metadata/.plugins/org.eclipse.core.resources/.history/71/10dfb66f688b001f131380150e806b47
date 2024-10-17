@@ -1,0 +1,35 @@
+package test;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/add")
+public class Add extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doGet...........");
+		
+		String aParam = request.getParameter("a");
+		String bParam = request.getParameter("b");
+		
+		int a = (aParam != null) ? Integer.parseInt(aParam): 0;
+		int b = (aParam != null) ? Integer.parseInt(bParam): 0;
+		
+		int sum = a+b;
+		
+		response.setContentType("text/html");
+		
+		
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

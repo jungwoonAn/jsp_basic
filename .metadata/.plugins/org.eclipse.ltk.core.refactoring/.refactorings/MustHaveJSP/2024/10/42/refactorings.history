@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;Error500.jsp, Import.jsp&apos; to &apos;01_directive&apos;" description="Move 2 resources to &apos;01_directive&apos;" destination="src/main/webapp/01_directive" element1="src/main/webapp/Error500.jsp" element2="src/main/webapp/Import.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="2" stamp="1729060653211" updateReferences="true"/>
+</session>
