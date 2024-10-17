@@ -10,7 +10,7 @@
 <body>
 	<h2>3. HTTP 요청 헤더 정보 읽기</h2>
 	<%
-	Enumeration headers = request.getHeaderNames();
+	Enumeration<String> headers = request.getHeaderNames();
 	while(headers.hasMoreElements()){
 		String headerName = (String)headers.nextElement();
 		String headerValue = request.getHeader(headerName);

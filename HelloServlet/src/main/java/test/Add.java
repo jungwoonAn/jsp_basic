@@ -36,6 +36,8 @@ public class Add extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPost...........");
+		
 		// 응답 콘텐츠 타입 설정(text/html)
 		response.setContentType("text/html");
 		
