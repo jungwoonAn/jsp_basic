@@ -1,0 +1,25 @@
+package common;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class JDBConnect {
+	public Connection con;
+	public Statement stmt;
+	public PreparedStatement pstmt;
+	public ResultSet rs;
+	
+	// 기본 생성자
+	public JDBConnect() {
+		try {
+			// JDBC 드라이버 로드
+			Class.forName("oracle.jdbc.OracleDriver");
+			
+			// DB 연결
+			String url="jdbc:";
+		}
+	}
+	
+}

@@ -11,7 +11,7 @@
 	String id = request.getParameter("user_id");
 	String pwd = request.getParameter("user_pwd");
 	
-	if(id.equalsIgnoreCase("test01") && pwd.equalsIgnoreCase("1234")){
+	if(id.equals("test01") && pwd.equals("1234")){
 		// 응답 페이지로 이동
 		response.sendRedirect("ResponseWelcome.jsp");
 	}else {
