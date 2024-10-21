@@ -26,4 +26,6 @@
     <!--
     <Manager pathname="SESSIONS.ser" />
     -->
+    
+    <ResourceLink global="jdbc/myoracle" name="jdbc/myoracle" type="javax.sql.DataSource"/>
 </Context>

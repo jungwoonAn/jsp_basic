@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+// 로그인 폼으로부터 받은 파라미터(아이디/패스워드)
+String userId = request.getParameter("user_id");
+String userPass = request.getParameter("user_pass");
+
+// web.xml에서 가져온 데이터베이스 연결 정보
+String oracleDriver = application.getInitParameter("OracleDriver");
+String oracleURL = application.getInitParameter("OracleURL");
+String oracleID = application.getInitParameter("OracleID");
+String oraclePwd = application.getInitParameter("OraclePwd");
+%>    

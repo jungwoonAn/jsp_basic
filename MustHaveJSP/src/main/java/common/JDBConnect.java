@@ -9,7 +9,7 @@ import java.sql.Statement;
 import jakarta.servlet.ServletContext;
 
 public class JDBConnect {
-	public Connection con;
+	public Connection conn;
 	public Statement stmt;
 	public PreparedStatement pstmt;
 	public ResultSet rs;
@@ -24,7 +24,7 @@ public class JDBConnect {
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String id = "musthave";
 			String pwd = "1234";
-			con = DriverManager.getConnection(url, id, pwd);
+			conn = DriverManager.getConnection(url, id, pwd);
 			
 			System.out.println("DB 연결 성공(기본 생성자)");
 		}catch (Exception e) {
@@ -39,7 +39,7 @@ public class JDBConnect {
 			Class.forName(driver);
 			
 			// DB 연결
-			con = DriverManager.getConnection(url, id, pwd);
+			conn = DriverManager.getConnection(url, id, pwd);
 			
 			System.out.println("DB 연결 성공(인수 생성자 1)");
 		}catch (Exception e) {
@@ -58,7 +58,7 @@ public class JDBConnect {
 			String url = application.getInitParameter("OracleURL");
 			String id = application.getInitParameter("OracleId");
 			String pwd = application.getInitParameter("OraclePwd");
-			con = DriverManager.getConnection(url, id, pwd);
+			conn = DriverManager.getConnection(url, id, pwd);
 			
 			System.out.println("DB 연결 성공(인수 생성자 2)");
 		}catch (Exception e) {
@@ -72,7 +72,7 @@ public class JDBConnect {
 			if(rs != null) rs.close();
 			if(stmt != null) stmt.close();
 			if(pstmt != null) pstmt.close();
-			if(con != null) con.close();
+			if(conn != null) conn.close();
 			
 			System.out.println("JDBC 자원 해제");
 		}catch(Exception e) {
