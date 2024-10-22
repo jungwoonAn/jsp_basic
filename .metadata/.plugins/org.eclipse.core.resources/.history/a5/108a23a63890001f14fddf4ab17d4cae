@@ -1,0 +1,25 @@
+<%@page import="model1.board.BoardVO"%>
+<%@page import="model1.board.BoardDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="IsLoggedIn.jsp" %>  <!-- 로그인 확인 -->
+<%
+//쿼리스트링 파라미터값 받기
+String num = request.getParameter("num");
+
+//DB 연결
+BoardDAO bDao = new BoardDAO(application);
+BoardVO bVo = bDao.selectView(num);  // 게시물 가져오기
+// 로그인ID 얻기
+String sessionId = session.getAttribute("UserId").toString();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원제 게시판 - 수정하기(Edit)</title>
+</head>
+<body>
+	
+</body>
+</html>

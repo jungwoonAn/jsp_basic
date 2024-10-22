@@ -1,0 +1,72 @@
+<%@page import="model1.board.BoardVO"%>
+<%@page import="model1.board.BoardDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% 
+// 쿼리스트링 파라미터값 받기
+String num = request.getParameter("num");
+
+// DB 연결
+BoardDAO bDao = new BoardDAO(application);
+bDao.updateVisitCount(num);
+BoardVO bVo = bDao.selectView(num);
+bDao.close();
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원제 게시판 - 상세보기(View)</title>
+</head>
+<body>
+	<jsp:include page="../Common/Link.jsp" />
+	
+	<h2>회원제 게시판 - 상세보기(View)</h2>
+	<form name="viewFrm">
+		<input type="hidden" name="num" value="<%= num %>">
+		<table border="1" style="width: 100%;">
+			<tbody>
+				<tr>
+					<th>번호</th>
+					<td><%= bVo.getNum() %></td>
+					<th>작성자</th>
+					<td><%= bVo.getName() %></td>
+				</tr>
+				<tr>
+					<th>작성일</th>
+					<td><%= bVo.getPostdate() %></td>
+					<th>조회수</th>
+					<td><%= bVo.getVisitcount() %></td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td colspan="3"><%= bVo.getTitle() %></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td colspan="3" style="height: 100px;">
+						<%= bVo.getContent().replace("\r\n", "<br>") %>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+					<%
+					if(session.getAttribute("UserId")!=null 
+						&& session.getAttribute("UserId").toString().equals(bVo.getId())){
+					%>
+						<button type="submit">수정하기</button>
+						<button type="button">삭제하기</button>
+					<%
+					}
+					%>						
+						<button type="button" onclick="location.href='List.jsp';">목록 보기</button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+package model1.board;
+
+import JDBConnect;
+
+public class BoardDAO extends JDBConnect {
+
+}

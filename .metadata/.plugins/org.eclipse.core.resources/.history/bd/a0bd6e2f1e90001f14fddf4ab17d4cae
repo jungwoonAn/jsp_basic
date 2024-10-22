@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="IsLoggedIn.jsp" %> <!-- 로그인 확인 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원제 게시판</title>
+<script type="text/javascript">
+	function validateForm(form){
+		if(!form.user_id.value){
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+		if(form.user_pass.value==""){
+			alert("패스워드를 입력하세요");
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="IsLoggedIn.jsp" %>
+<%
+// 수정 내용 얻기(post방식으로 전송된 param)
+String num = request.getParameter("num");
+String title = request.getParameter("title");
+String content = request.getParameter("content");
+
+%>  
