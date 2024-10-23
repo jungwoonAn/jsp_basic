@@ -27,7 +27,7 @@ public class MemberDAO extends JDBConnect {
 			
 			// 결과 처리
 			if(rs.next()) {
-				// 쿼리 겨로가로 얻은 회원정보를 VO객체에 저장
+				// 쿼리 결과로 얻은 회원정보를 VO객체에 저장
 				mVo.setId(rs.getString("id"));
 				mVo.setPass(rs.getString("pass"));
 				mVo.setName(rs.getString("name"));

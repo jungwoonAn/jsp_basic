@@ -22,7 +22,7 @@ bDao.close();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원제 게시판 - 수정하기(Edit)</title>
+<title>회원제 게시판</title>
 <script type="text/javascript">
 	function validateForm(form){  // 폼내용 검증
 		if(form.title.value == ""){
@@ -65,7 +65,7 @@ bDao.close();
 			<tfoot>
 				<tr>
 					<td colspan="2" style="text-align: center;">
-						<button type="submit">작성 완료</button>
+						<button type="submit">수정 완료</button>
 						<button type="reset">다시 입력</button>
 						<button type="button" onclick="location.href='List.jsp';">목록 보기</button>
 					</td>

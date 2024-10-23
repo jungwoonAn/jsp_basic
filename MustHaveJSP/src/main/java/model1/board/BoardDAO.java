@@ -79,6 +79,52 @@ public class BoardDAO extends JDBConnect {
 		return list;
 	}
 	
+	// 1-3.게시물 목록 가져오기(페이징 기능 추가)
+	public List<BoardVO> selectListPage(Map<String, Object> map){
+		List<BoardVO> list = new ArrayList<BoardVO>();  // 결과(게시물 목록)를 담을 변수
+		
+		// 모든 게시물 조회
+		String sql = "select * from ("
+				+ "		select Tb.*, rownum rNum from ("
+				+ "			select * from board";				
+		
+		// 검색 조회 : select * from board where title like '%지금은%';
+		if(map.get("searchWord") != null) {
+			sql += " where " + map.get("searchField") + " "
+					+ " like '%" + map.get("searchWord") + "%'";
+		}
+		sql += "		order by num desc"
+			+ "    ) Tb"
+			+ ") where rNum between ? and ?";
+		
+		try {
+			// 동적 쿼리문
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, map.get("start").toString());
+			pstmt.setString(2, map.get("end").toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				// 한 행(게시물 하나)의 내용을 VO에 저장
+				BoardVO bVo = new BoardVO();
+				
+				bVo.setNum(rs.getString("num"));
+				bVo.setTitle(rs.getString("title"));
+				bVo.setContent(rs.getString("content"));
+				bVo.setPostdate(rs.getDate("postdate"));
+				bVo.setId(rs.getString("id"));
+				bVo.setVisitcount(rs.getString("visitcount"));
+				
+				list.add(bVo);
+			}
+		}catch(Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 	// 2.작성한 글 받아 DB에 추가
 	public int insertWrite(BoardVO bVo) {
 		int result = 0;

@@ -17,6 +17,12 @@ bVo.setId(session.getAttribute("UserId").toString());
 // DAO 객체를 통해 DB에 VO 저장
 BoardDAO bDao = new BoardDAO(application);
 int iResult = bDao.insertWrite(bVo);
+/* 더미 데이터 입력을 위한 코드
+int iResult = 0;
+for(int i=1; i<=100; i++){
+	bVo.setTitle(title + " - " + i);
+	iResult = bDao.insertWrite(bVo);
+} */
 bDao.close();
 
 // 성공 or 실패?

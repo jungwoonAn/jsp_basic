@@ -21,3 +21,19 @@ select * from board where title like '%지금은%';
 
 -- 선택한 글 아이디 일치하면 조회
 select B.*, M.name from member M, board B where M.id=B.id and num=7;
+
+-- rownum
+select * from member;
+select id, pass, rownum from member;
+
+select * from (
+	select Tb.*, rownum rNum from (
+		select * from board order by num desc
+	)Tb
+) where rNum between 1 and 10;
+
+select * from (
+	select Tb.*, rownum rNum from (
+		select * from board where title like '%제목6%' order by num desc
+	)Tb
+) where rNum between 11 and 20;
