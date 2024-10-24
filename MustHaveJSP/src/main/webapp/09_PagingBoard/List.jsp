@@ -3,6 +3,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="model1.board.BoardDAO"%>
+<%@page import="utils.BoardPage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -22,9 +23,9 @@ if(searchWord != null){
 int totalCount = bDao.selectCount(param);
 
 /** 페이징 처리 start **/
-// 1.전체 페이지 수 계산(web.xml파라미터 값 받아와서 계산)
+// 전체 페이지 수 계산(web.xml파라미터 값 받아와서 계산)
 int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
-int blockPage = Integer.parseInt(application.getInitParameter("PAGE_PER_BLOCK"));
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
 int totalPage = (int)Math.ceil((double)totalCount / pageSize);  // 전체 페이지수
 
 // 현재 페이지 확인
@@ -42,7 +43,9 @@ param.put("end", end);
 /** 페이징 처리 end **/
 
 // 게시물 목록 받기
-List<BoardVO> boardList = bDao.selectList(param);
+//List<BoardVO> boardList = bDao.selectList(param);
+// 페이징된 게시물 목록 받기
+List<BoardVO> boardList = bDao.selectListPage(param);
 bDao.close();
 
 %>    
@@ -58,6 +61,7 @@ bDao.close();
 	
 	<div class="container">
 		<h2 class="my-5">목록 보기(List)</h2>
+		<p>현재 페이지 : <%= pageNum %> (전체 페이지: <%= totalPage %>)</p>
 		<!-- 검색 폼 -->
 		<!-- form태그에 action이 없으면 어디로?? => 직전화면으로 이동 -->
 		<form method="get">
@@ -100,8 +104,10 @@ bDao.close();
 			}else {
 				// 게시물이 있을 때
 				int virtualNum = 0;  // 화면상 게시물 번호
+				int countNum = 0;  // 
 				for(BoardVO bVo : boardList){
-					virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
+					// virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
+					virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);
 				%>
 					<tbody>
 						<tr style="text-align:center;">
@@ -120,6 +126,15 @@ bDao.close();
 			}
 			%>
 		</table>
+		<!-- 페이징 처리 -->
+		<nav aria-label="Page navigation">
+		    <ul class="pagination justify-content-center">
+		    	<%= BoardPage.pagingStr(totalCount, pageSize, blockPage, 
+		    			pageNum, request.getRequestURI()) %>
+		    </ul>
+		</nav>
+		
+		
 		<!-- 목록 하단의 글쓰기 버튼 -->
 		<div class="text-end">
 			<button type="button" class="btn btn-primary" onclick="location.href='Write.jsp';">글쓰기</button>

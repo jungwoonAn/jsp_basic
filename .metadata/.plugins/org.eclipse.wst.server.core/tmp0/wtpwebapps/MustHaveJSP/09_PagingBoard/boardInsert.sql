@@ -34,6 +34,6 @@ select * from (
 
 select * from (
 	select Tb.*, rownum rNum from (
-		select * from board where title like '%제목6%' order by num desc
+		select * from board where title like '%페이징 처리%' order by num desc
 	)Tb
 ) where rNum between 11 and 20;

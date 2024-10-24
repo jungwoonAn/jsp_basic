@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../BS_Board/List.jsp">회원제 게시판</a>
+    <a class="navbar-brand" href="List.jsp">회원제 게시판</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,13 +12,13 @@
 		<% if(session.getAttribute("UserId")==null) {
 		%>
 			<li class="nav-item">
-	          <a class="nav-link" href="../BS_Board/LoginForm.jsp">로그인</a>
+	          <a class="nav-link" href="../Common/LoginForm.jsp">로그인</a>
 	        </li>
 		<%
 		}else {
 		%>
 			<li class="nav-item">
-	          <a class="nav-link" href="../BS_Board/Logout.jsp">로그아웃</a>
+	          <a class="nav-link" href="../Common/Logout.jsp">로그아웃</a>
 	        </li>
 		<%	
 		}

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 로그인 확인 -->
-<%@ include file="IsLoggedIn.jsp" %> 
+<%@ include file="../Common/IsLoggedIn.jsp" %> 
 <%
  // 쿼리스트링 파라미터값 받기
  String num = request.getParameter("num");

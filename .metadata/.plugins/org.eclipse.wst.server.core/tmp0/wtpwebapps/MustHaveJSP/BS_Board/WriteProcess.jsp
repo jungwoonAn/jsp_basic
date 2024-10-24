@@ -2,7 +2,7 @@
 <%@page import="model1.board.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="IsLoggedIn.jsp" %>    
+<%@ include file="../Common/IsLoggedIn.jsp" %>    
 <%
 // 폼값 받기
 String title = request.getParameter("title");

@@ -1,0 +1,28 @@
+package utils;
+
+public class BoardPage {
+	public static String pagingStr(int totalCount, int pageSize, int blockPage, 
+			int pageNum, String reqUrl) {
+		
+		String pagingStr = "";
+		
+		// 3단계 : 전체 페이지 수 계산
+		int totalPages = (int)(Math.ceil((double) totalCount/pageSize));
+		
+		// 4단계 : '이전 페이지 블록 바로가기' 출력
+		int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1;
+		if(pageTemp != 1) {
+			pagingStr += "<li class='page-item'>\r\n"
+					+ "      <a class='page-link' href='"+ reqUrl +"?pageNum=1'>\r\n"
+					+ "        <span aria-hidden='true'>&laquo;</span>\r\n"
+					+ "      </a>\r\n"
+					+ "    </li>";			
+			pagingStr += "&nbsp;";
+			pagingStr += "<li class='page-item'>\r\n"
+					+ "      <a class='page-link' href='"+ reqUrl +"?pageNum="+ (pageTemp - 1) +"'>Previous</a>"
+					+ "    </li>";
+		}
+		
+		return pagingStr;
+	}
+}

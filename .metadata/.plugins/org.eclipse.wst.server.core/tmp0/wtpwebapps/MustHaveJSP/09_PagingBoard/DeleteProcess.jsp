@@ -2,7 +2,7 @@
 <%@page import="model1.board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="IsLoggedIn.jsp" %>
+<%@ include file="../Common/IsLoggedIn.jsp" %>
 <%
 // 삭제할 글번호 얻기(post방식으로 전송된 param)
 String num = request.getParameter("num");
