@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
 <html>
-<head><title>JSTL - import</title></head>
+<head>
+<meta charset="UTF-8">
+<title>JSTL - import</title>
+</head>
 <body>
     <c:set var="requestVar" value="MustHave" scope="request" />
-    <c:import url="/11JSTL/inc/OtherPage.jsp" var="contents">
+    <c:import url="/11_JSTL/inc/OtherPage.jsp" var="contents">
         <c:param name="user_param1" value="JSP" />
         <c:param name="user_param2" value="기본서" />
     </c:import>       

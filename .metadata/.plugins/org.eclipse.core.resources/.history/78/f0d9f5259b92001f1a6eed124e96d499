@@ -1,0 +1,32 @@
+package fileupload;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import org.apache.tomcat.jakartaee.commons.io.FileUtils;
+
+@WebServlet("13_FileUpload/UploadProcess.do")
+@MultipartConfig(
+    maxFileSize = 1024*1024*1,
+    maxRequestSize = 1024*1024*10
+)
+public class UploadProcess extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			String saveDirectory = getServletContext().getRealPath("/Uploads");
+			String originalFileName = FileUtils.uploadFile(request, saveDirectory);
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

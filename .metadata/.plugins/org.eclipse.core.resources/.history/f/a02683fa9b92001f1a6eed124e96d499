@@ -1,0 +1,16 @@
+package fileupload;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.Part;
+
+public class FileUtil {
+	// 파일 업로드
+	public static String uploadFile(HttpServletRequest request, String sDirectory) throws ServletException, IOException {
+		
+		Part part = request.getPart("ofile");
+		String partHeader = part.getHeader("content-disposition");
+	}
+}

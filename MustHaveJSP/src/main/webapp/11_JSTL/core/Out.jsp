@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>   
+<!DOCTYPE html>
 <html>
-<head><title>JSTL - out</title></head>
+<head>
+<meta charset="UTF-8">
+<title>JSTL - out</title>
+</head>
 <body>
     <c:set var="iTag">
         i 태그는 <i>기울임</i>을 표현합니다.

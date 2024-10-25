@@ -22,8 +22,8 @@ public class DBConnPool {
 			Context initContext = new InitialContext();
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
-			Connection conn = ds.getConnection();
-			
+			conn = ds.getConnection();  // 전역적으로 설정해야함!!
+
 			System.out.println("DB 커넥션 풀 연결 성공");
 		}catch(Exception e) {
 			System.out.println("DB 커넥션 풀 연결 실패");

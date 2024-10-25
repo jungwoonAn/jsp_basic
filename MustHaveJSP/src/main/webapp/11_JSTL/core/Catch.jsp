@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>    
+<!DOCTYPE html>
 <html>
-<head><title>JSTL - catch</title></head>
+<head>
+<meta charset="UTF-8">
+<title>JSTL - catch</title>
+</head>
 <body>
     <h4>자바 코드에서의 예외</h4>
     <%
