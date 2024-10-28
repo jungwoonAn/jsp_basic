@@ -1,8 +1,0 @@
-package membership;
-
-import common.JDBConnect;
-
-public class MemberDAO extends JDBConnect {
-	// DB 연결이 완료된 MemberDAO 객체 생성
-	
-}

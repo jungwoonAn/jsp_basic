@@ -1,7 +1,0 @@
-package membership;
-
-import JDBConnect;
-
-public class MemberDAO extends JDBConnect {
-
-}

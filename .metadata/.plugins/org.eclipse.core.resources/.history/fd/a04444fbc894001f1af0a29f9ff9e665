@@ -1,0 +1,28 @@
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="java.io.File"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String saveDirectory = application.getRealPath("/Uploads");
+String saveFilename = request.getParameter("sName");
+String originalFilename = request.getParameter("oName");
+
+try{
+	// 파일을 찾아 입력 스트림 생성
+	File file = new File(saveDirectory, saveFilename);
+	InputStream inStream = new FileInputStream(file);
+	
+	// 한글 파일명 깨짐 방지
+	String client = request.getHeader("User-Agent");
+	
+	if(client.indexOf("WOW64")  == -1){  // explorer(Windows on Windows 64-bit)가 아니면
+		originalFilename = new String(originalFilename.getBytes("utf-8"), "ISO-8859-1");
+	}else {  // 익스플로러 이외의 브라우저
+		originalFilename = new String(originalFilename.getBytes("KSC5601"), "ISO-8859-1");
+	}
+	
+	// 파일 다운로드용 응답 헤더 설정
+	
+}
+%>

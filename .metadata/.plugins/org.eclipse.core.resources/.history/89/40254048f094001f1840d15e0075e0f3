@@ -1,0 +1,88 @@
+package model2.mvcboard;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import common.DBConnPool;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class MVCBoardDAO extends DBConnPool {
+	
+	// 1-1.게시물 개수 세기
+	public int selectCount(Map<String, Object> map) {
+		int totalCount = 0;  // 결과(게시물 수)를 담을 변수
+		
+		// 모든 게시물 수를 얻어오는 쿼리
+		String sql = "select count(*) from mvcboard";
+		
+		// 검색 조회 : select count(*) from board where title like '%지금은%';
+		if(map.get("searchWord") != null) {
+			sql += " where " + map.get("searchField") + " "
+					+ " like '%" + map.get("searchWord") + "%'";
+		}
+		
+		try {
+			stmt = conn.createStatement();  //쿼리문 생성
+			rs = stmt.executeQuery(sql);  // 쿼리 실행
+			rs.next();  // 커서를 첫번째 생으로 이동
+			totalCount = rs.getInt(1);  // 첫번째 컬럼 값을 가져옴
+		}catch(Exception e) {
+			System.out.println("게시물 수를 구하는 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return totalCount;
+	}
+	
+	// 1-2.게시물 목록 가져오기(페이징 기능 추가)
+	public List<MVCBoardVO> selectListPage(Map<String, Object> map){
+		List<MVCBoardVO> list = new ArrayList<MVCBoardVO>();  // 결과(게시물 목록)를 담을 변수
+		
+		// 모든 게시물 조회
+		String sql = "select * from ("
+				+ "		select Tb.*, rownum rNum from ("
+				+ "			select * from mvcboard";				
+		
+		// 검색 조회 : select * from board where title like '%지금은%';
+		if(map.get("searchWord") != null) {
+			sql += " where " + map.get("searchField") + " "
+					+ " like '%" + map.get("searchWord") + "%'";
+		}
+		sql += "		order by num desc"
+			+ "    ) Tb"
+			+ ") where rNum between ? and ?";
+		
+		try {
+			// 동적 쿼리문
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, map.get("start").toString());
+			pstmt.setString(2, map.get("end").toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				// 한 행(게시물 하나)의 내용을 VO에 저장
+				MVCBoardVO vo = new MVCBoardVO();
+				
+				vo.setIdx(rs.getString("idx"));
+				vo.setName(rs.getString("name"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setPostdate(rs.getDate("postdate"));
+				vo.setOfile(rs.getString("ofile"));
+				vo.setSfile(rs.getString("sfile"));
+				vo.setDowncount(rs.getInt("downcount"));
+				vo.setPass(rs.getString("pass"));
+				vo.setVisitcount(rs.getInt("visitcount"));
+				
+				list.add(vo);
+			}
+		}catch(Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+}

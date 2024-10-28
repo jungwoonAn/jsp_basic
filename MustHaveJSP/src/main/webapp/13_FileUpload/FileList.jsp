@@ -4,6 +4,7 @@
 <%@page import="fileupload.MyFileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
 <%
 MyFileDAO fDao = new MyFileDAO();
 List<MyFileVO> fileLists = fDao.myFileList();
@@ -13,7 +14,7 @@ fDao.close();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FileList.jsp</title>
 </head>
 <body>
 	<h2>DB에 등록된 파일 목록 보기</h2>
@@ -38,7 +39,8 @@ fDao.close();
 			<td><%= f.getOfile() %></td>
 			<td><%= f.getSfile() %></td>
 			<td><%= f.getPostdate() %></td>
-			<td>[다운로드]</td>
+			<td><a href="Download.jsp?oName=<%= URLEncoder.encode(f.getOfile(), "UTF-8") %>
+			&sName=<%= URLEncoder.encode(f.getSfile(), "UTF-8") %>">[다운로드]</a></td>
 		</tr>
 		<% } %>
 	</table>

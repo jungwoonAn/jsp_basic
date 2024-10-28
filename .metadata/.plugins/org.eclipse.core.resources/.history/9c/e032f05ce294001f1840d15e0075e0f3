@@ -1,0 +1,9 @@
+package model2.mvcboard;
+
+import common.DBConnPool;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class MVCBoardDAO extends common.DBConnPool {
+
+}
