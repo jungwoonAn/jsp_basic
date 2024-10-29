@@ -65,7 +65,7 @@
 			<div class="mb-3 row">
 			    <label class="col-sm-2 col-form-label">비밀번호</label>
 			    <div class="col-sm-10">
-			    	<input type="text" class="form-control" name="pass" style="width: 200px;">
+			    	<input type="password" class="form-control" name="pass" style="width: 200px;">
 			    </div>
 			</div>
 			

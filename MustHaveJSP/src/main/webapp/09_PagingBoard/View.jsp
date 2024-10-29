@@ -56,7 +56,7 @@ bDao.close();
 			    </div>
 			    <label class="col-sm-2 col-form-label">조회수</label>
 			    <div class="col-sm-4">
-			    	<input type="text" class="form-control" name="bisitcount" readonly value="<%= bVo.getVisitcount() %>">
+			    	<input type="text" class="form-control" name="visitcount" readonly value="<%= bVo.getVisitcount() %>">
 			    </div>
 			</div>
 			<div class="mb-3 row">

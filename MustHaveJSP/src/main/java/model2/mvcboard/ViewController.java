@@ -14,7 +14,8 @@ public class ViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// 게시물 불러오기
 		MVCBoardDAO dao = new MVCBoardDAO();
 		String idx = request.getParameter("idx");
@@ -26,7 +27,7 @@ public class ViewController extends HttpServlet {
 		String ext = null, fileName = vo.getSfile();
 		
 		if(fileName != null) {
-			ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+			ext = (fileName.substring(fileName.lastIndexOf(".") + 1)).toLowerCase();
 		}
 		String[] mimeStr = {"png","jpg","gif"};  // 이미지 확장자들을 배열에 저장
 		List<String> mimeList = Arrays.asList(mimeStr);  // 배열을 리스트타입으로 변환
@@ -39,6 +40,6 @@ public class ViewController extends HttpServlet {
 		// 게시물 저장후 뷰(JSP)로 포워드
 		request.setAttribute("vo", vo);
 		request.setAttribute("isImage", isImage);
-		request.getRequestDispatcher("14_MVCBoard/View.jsp").forward(request, response);
+		request.getRequestDispatcher("/14_MVCBoard/View.jsp").forward(request, response);
 	}
 }

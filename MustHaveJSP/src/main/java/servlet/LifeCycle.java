@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@WebServlet("/12_Servlet/LifeCycle.do")
 public class LifeCycle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
          
@@ -32,12 +32,12 @@ public class LifeCycle extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet() 호출");
-		request.getRequestDispatcher("12_Servlet/LifeCycle.jsp").forward(request, response);
+		request.getRequestDispatcher("/12_Servlet/LifeCycle.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost() 호출");
-		request.getRequestDispatcher("12_Servlet/LifeCycle.jsp").forward(request, response);
+		request.getRequestDispatcher("/12_Servlet/LifeCycle.jsp").forward(request, response);
 	}
 	
 	@Override

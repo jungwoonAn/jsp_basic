@@ -1,0 +1,56 @@
+package model2.mvcboard;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import utils.JSFunction;
+
+import java.io.IOException;
+
+import fileupload.FileUtil;
+
+@WebServlet("/mvcboard/edit.do")
+@MultipartConfig(
+	maxFileSize = 1024*1024*1,
+	maxRequestSize = 1024*1024*10
+)
+public class EditController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+     
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		String idx = request.getParameter("idx");
+		MVCBoardDAO dao = new MVCBoardDAO();
+		MVCBoardVO vo = dao.selectView(idx);
+		
+		request.setAttribute("vo", vo);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/14_MVCBoard/Edit.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		// 1. 파일 업로드 처리
+		// 업로드 디렉터리의 물리적 경로 확인
+		String saveDirectory = getServletContext().getRealPath("/Uploads");
+		
+		// 파일 업로드
+		String originalFileName = "";
+		try {
+			originalFileName = FileUtil.uploadFile(request, saveDirectory);
+		}catch(Exception e) {
+			// 파일 업로드 실패
+			JSFunction.alertLocation(response, "파일 업로드 오류입니다.", "/mvcboard/write.do");
+			e.printStackTrace();
+		}
+		
+		// 2. 파일 업로드 외 처리
+		
+	}
+	
+}

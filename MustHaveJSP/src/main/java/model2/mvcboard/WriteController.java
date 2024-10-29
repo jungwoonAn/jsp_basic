@@ -14,14 +14,16 @@ import fileupload.FileUtil;
 public class WriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// 페이지 포워드
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/14_MVCBoard/Write.jsp");
 		dispatcher.forward(request, response);
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// 1. 파일 업로드 처리
 		// 업로드 디렉터리의 물리적 경로 확인
 		// C:\Works\JSP_Servlet\jsp\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MustHaveJSP\Uploads

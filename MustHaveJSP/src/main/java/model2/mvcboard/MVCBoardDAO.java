@@ -159,4 +159,89 @@ public class MVCBoardDAO extends DBConnPool {
 			e.printStackTrace();
 		}
 	}
+	
+	// 4. 다운로드 횟수를 1 증가
+	public void updateDownCount(String idx) {
+		String sql = "update mvcboard set downcount=downcount+1 where idx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 5-1.입력한 비밀번호가 지정한 게시물의 비밀번호가 일치하는지 확인
+	public boolean confirmPassword(String pass, String idx) {
+		boolean isCorr = false;
+		
+		try {
+			String sql = "select pass from mvcboard where idx=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pass.equals(rs.getString("pass"))) {					
+					isCorr = true;
+				}else {
+					System.out.println("비밀번호가 일치하지 않습니다.");
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("비밀번호 체크 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return isCorr;
+	}
+	
+	// 5-2. 지정한 게시물 삭제
+	public int deletePost(String idx) {
+		int result = 0;
+		
+		try {
+			// 쿼리문
+			String sql = "delete from mvcboard where idx=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			System.out.println("게시물 삭제 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	// 6.선택한 게시물 수정(파일 업로드 지원)
+	public int updatePost(MVCBoardVO vo) {
+		int result = 0;
+		
+		try {
+			// 쿼리문
+			String sql = "update mvcboard set title=?, name=?, content=?, ofile=?, sfile=?"
+					+ " where idx=? and pass=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getContent());
+			pstmt.setString(4, vo.getOfile());
+			pstmt.setString(5, vo.getSfile());
+			pstmt.setString(6, vo.getIdx());
+			pstmt.setString(7, vo.getPass());
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
