@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.beans.Statement"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
@@ -14,8 +12,6 @@
     <fullyQualifiedTypeName name="model1.board.BoardVO"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="servlet.MemberAuth"/>
-    <fullyQualifiedTypeName name="membership.MemberDAO"/>
-    <fullyQualifiedTypeName name="membership.MemberVO"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.jakartaee.commons.io.FileUtils"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.FileUtils"/>
@@ -38,26 +34,30 @@
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="utils.BoardPage"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
     <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="java.io.File"/>
-    <fullyQualifiedTypeName name="utils.JSFunction"/>
     <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="jakarta.servlet.annotation.MultipartConfig"/>
     <fullyQualifiedTypeName name="model2.mvcboard.MVCBoardDAO"/>
     <fullyQualifiedTypeName name="model2.mvcboard.MVCBoardVO"/>
     <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="fileupload.FileUtil"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.Filter"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="membership.MemberDAO"/>
+    <fullyQualifiedTypeName name="membership.MemberVO"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebFilter"/>
+    <fullyQualifiedTypeName name="utils.JSFunction"/>
 </qualifiedTypeNameHistroy>
