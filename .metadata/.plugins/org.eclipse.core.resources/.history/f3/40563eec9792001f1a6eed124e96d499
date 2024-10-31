@@ -1,7 +1,0 @@
-package fileupload;
-
-import DBConnPool;
-
-public class MyFileDAO extends DBConnPool {
-
-}

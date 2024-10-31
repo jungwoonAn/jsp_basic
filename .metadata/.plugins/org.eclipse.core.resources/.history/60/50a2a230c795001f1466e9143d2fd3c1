@@ -1,7 +1,0 @@
-package filter;
-
-import jakarta.servlet.Filter;
-
-public class LoginFilter extends Filter {
-
-}

@@ -1,7 +1,0 @@
-package filter;
-
-import Filter;
-
-public class LoginFilter extends Filter {
-
-}

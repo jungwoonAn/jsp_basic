@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-    <typeInfo handle="=MustHaveJSP/C:\/Java\/apache-tomcat-10.1.31\/lib\/servlet-api.jar=/javadoc_location=/https:\/\/jakarta.ee\/specifications\/servlet\/6.0\/apidocs\/=/=/owner.project.facets=/jst.web=/&lt;jakarta.servlet(Filter.class[Filter" modifiers="1537" timestamp="1727949758000"/>
-    <typeInfo handle="=MustHaveJSP/C:\/Java\/apache-tomcat-10.1.31\/lib\/servlet-api.jar=/javadoc_location=/https:\/\/jakarta.ee\/specifications\/servlet\/6.0\/apidocs\/=/=/owner.project.facets=/jst.web=/&lt;jakarta.servlet.http(HttpSessionListener.class[HttpSessionListener" modifiers="1537" timestamp="1727949758000"/>
-    <typeInfo handle="=MustHaveJSP/C:\/Java\/apache-tomcat-10.1.31\/lib\/servlet-api.jar=/javadoc_location=/https:\/\/jakarta.ee\/specifications\/servlet\/6.0\/apidocs\/=/=/owner.project.facets=/jst.web=/&lt;jakarta.servlet(ServletContextListener.class[ServletContextListener" modifiers="1537" timestamp="1727949758000"/>
-    <typeInfo handle="=MustHaveJSP/C:\/Java\/apache-tomcat-10.1.31\/lib\/servlet-api.jar=/javadoc_location=/https:\/\/jakarta.ee\/specifications\/servlet\/6.0\/apidocs\/=/=/owner.project.facets=/jst.web=/&lt;jakarta.servlet.http(HttpSessionAttributeListener.class[HttpSessionAttributeListener" modifiers="1537" timestamp="1727949758000"/>
-</typeInfoHistroy>
